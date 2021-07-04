@@ -9,29 +9,13 @@ import {
 import Library from "./Library";
 import Home from "./Home";
 import Explore from "./Explore";
+import NavBar from "./NavBar";
 
 function App() {
   return (
       <Router>
         <div>
-          <nav>
-            <ul>
-              <Link to={"/"}>
-                <img src={logo}/>
-              </Link>
-
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/explore">Explore</Link>
-              </li>
-              <li>
-                <Link to="/library">Library</Link>
-              </li>
-            </ul>
-          </nav>
-
+          <NavBar/>
           <Switch>
             <Route path="/explore">
               <Explore />
