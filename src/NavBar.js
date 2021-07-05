@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 const NavBar = () => {
         const classes = useStyles();
     return(
-        <AppBar >
+        <AppBar color={"transparent"} style={{backgroundColor:"black"}}>
         <Toolbar>
         <nav >
             <Link to={"/"}>
@@ -27,24 +27,24 @@ const NavBar = () => {
             </Link>
 
                     <Link to={"/"} style={{ textDecoration: 'none'}}>
-                    <Button size="small" className={classes.margin} >
+                    <Button size="small" style={{border:'none',color:'white'}} className={classes.margin} >
                         Home
                     </Button>
                     </Link>
 
 
                 <Link to="/explore" style={{ textDecoration: 'none'}}>
-                    <Button size="small" className={classes.margin}>
+                    <Button size="small" style={{border:'none',color:'white'}} className={classes.margin}>
                         Explore
                     </Button></Link>
 
                 <Link to="/library" style={{ textDecoration: 'none'}}>
-                    <Button size="small" className={classes.margin}>
+                    <Button size="small" style={{border:'none',color:'white'}} className={classes.margin}>
                         Library
                     </Button></Link>
 
         </nav>
-            <Button><SearchIcon></SearchIcon>Search</Button>
+            <Button  style={{border:'none',color:'white'}}><SearchIcon></SearchIcon> Search </Button>
         </Toolbar>
         </AppBar >
     )
