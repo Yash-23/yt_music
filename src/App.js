@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -14,7 +13,7 @@ import NavBar from "./NavBar";
 function App() {
   return (
       <Router>
-        <div>
+        <div >
           <NavBar/>
           <Switch>
             <Route path="/explore">
