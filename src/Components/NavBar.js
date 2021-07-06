@@ -1,56 +1,63 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Link} from "react-router-dom";
 import logo from "../logo.svg";
-import {AppBar, Button, Toolbar} from "@material-ui/core";
-import {makeStyles} from "@material-ui/core";
+import SearchBar from "./SearchBar";
+import {Box, Button, IconButton, Typography} from "@material-ui/core";
+import useStyles from "../Styles/NavBarStyle"
 import SearchIcon from '@material-ui/icons/Search';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
-const useStyles = makeStyles((theme) => ({
-    margin: {
-        margin: theme.spacing(1),
-    },
-    extendedIcon: {
-        marginRight: theme.spacing(1),
-    },
-}));
-
-
 
 const NavBar = () => {
-        const classes = useStyles();
-    return(
-        <AppBar color={"transparent"} style={{backgroundColor:"black", alignContent:"center"}}>
-        <Toolbar>
-        <nav >
-            <Link to={"/"}>
-                <img src={logo} />
-            </Link>
+    const classes = useStyles();
+    const [searchBarOff, setSearchBarOff] = useState(false);
 
-                    <Link to={"/"} style={{ textDecoration: 'none'}}>
-                    <Button size="small" style={{border:'none',color:'white',fontSize:"medium"}} className={classes.margin} >
-                        Home
-                    </Button>
+    return (
+    <Box className={classes.main} display={"flex"}>
+        <Link to={"/"} className={classes.logo}>
+            <img className={classes.logo} src={logo} alt="Music" height="25px"/>
+        </Link>
+        {searchBarOff ? (
+            <SearchBar/>
+        ) : (
+            <Box className={classes.navItems} display={"flex"}>
+                <Box display={"flex"}>
+                    <Link to={"/"} underline="none">
+                        <Typography variant="h6">Home</Typography>
                     </Link>
-
-
-                <Link to="/explore" style={{ textDecoration: 'none'}}>
-                    <Button size="small" style={{border:'none',color:'white',fontSize:"medium"}} className={classes.margin}>
-                        Explore
-                    </Button></Link>
-
-                <Link to="/library" style={{ textDecoration: 'none'}}>
-                    <Button size="small" style={{border:'none',color:'white', fontSize:"medium"}} className={classes.margin}>
-                        Library
-                    </Button></Link>
-
-        </nav>
-            <Button  style={{border:'none',color:'white'}}><SearchIcon></SearchIcon> Search </Button>
-            <MoreVertIcon fontSize={"medium"} style={{ color: "white" }}/>
-            <Button  style={{ color: "black" ,backgroundColor: "white",border:"none"}}>SIGN IN</Button>
-        </Toolbar>
-        </AppBar >
+                    <Link to={"/explore"} underline="none">
+                        <Typography variant="h6">Explore</Typography>
+                    </Link>
+                    <Link to={"library"} underline="none">
+                        <Typography variant="h6">Library</Typography>
+                    </Link>
+                </Box>
+                <Box>
+                    <Link
+                        underline="none"
+                        onClick={(e) => {
+                            setSearchBarOff(true)
+                        }}
+                    >
+                        <Typography variant="h6">
+                            <Box display="flex" className={classes.searchBar}>
+                                <SearchIcon/>
+                                Search
+                            </Box>
+                        </Typography>
+                    </Link>
+                </Box>
+            </Box>
+        )}
+        <Box className={classes.boxEnd}>
+            <IconButton color="primary" aria-label="more options">
+                <MoreVertIcon />
+            </IconButton>
+            <Button variant="contained" color="primary" size="small">
+                SIGN IN
+            </Button>
+        </Box>
+    </Box>
     )
 }
-
 export default NavBar;
