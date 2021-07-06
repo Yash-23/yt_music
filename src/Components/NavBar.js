@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import logo from "./logo.svg";
+import logo from "../logo.svg";
 import {AppBar, Button, Toolbar} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core";
 import SearchIcon from '@material-ui/icons/Search';
@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 const NavBar = () => {
         const classes = useStyles();
     return(
-        <AppBar color={"transparent"} style={{backgroundColor:"black"}}>
+        <AppBar color={"transparent"} style={{backgroundColor:"black", alignContent:"center"}}>
         <Toolbar>
         <nav >
             <Link to={"/"}>

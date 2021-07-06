@@ -1,14 +1,14 @@
-import './App.css';
+
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
-import Library from "./Library";
-import Home from "./Home";
-import Explore from "./Explore";
-import NavBar from "./NavBar";
+import Library from "./Components/Library";
+import Home from "./Components/Home";
+import Explore from "./Components/Explore";
+import NavBar from "./Components/NavBar";
 
 function App() {
   return (
