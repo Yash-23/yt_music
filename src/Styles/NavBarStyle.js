@@ -39,6 +39,9 @@ export default makeStyles({
             },
         },
     },
+    link:{
+        textDecoration:"none"
+    },
     boxEnd:{
         alignItems: 'center',
         zIndex: 1,

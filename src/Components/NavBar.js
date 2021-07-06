@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import logo from "../logo.svg";
 import SearchBar from "./SearchBar";
 import {Box, Button, IconButton, Typography} from "@material-ui/core";
-import useStyles from "../Styles/NavBarStyle"
+import useStyles from "../Styles/NavBarStyle";
 import SearchIcon from '@material-ui/icons/Search';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
@@ -22,19 +22,18 @@ const NavBar = () => {
         ) : (
             <Box className={classes.navItems} display={"flex"}>
                 <Box display={"flex"}>
-                    <Link to={"/"} underline="none">
+                    <Link to={"/"} className={classes.link}>
                         <Typography variant="h6">Home</Typography>
                     </Link>
-                    <Link to={"/explore"} underline="none">
+                    <Link to={"/explore"} className={classes.link}>
                         <Typography variant="h6">Explore</Typography>
                     </Link>
-                    <Link to={"library"} underline="none">
+                    <Link to={"library"} className={classes.link}  >
                         <Typography variant="h6">Library</Typography>
                     </Link>
                 </Box>
                 <Box>
-                    <Link
-                        underline="none"
+                    <Link  className={classes.link}
                         onClick={(e) => {
                             setSearchBarOff(true)
                         }}
@@ -51,9 +50,9 @@ const NavBar = () => {
         )}
         <Box className={classes.boxEnd}>
             <IconButton color="primary" aria-label="more options">
-                <MoreVertIcon />
+                <MoreVertIcon style={{ color: "white" }}/>
             </IconButton>
-            <Button variant="contained" color="primary" size="small">
+            <Button variant="contained" style={{backgroundColor : "white"}} size="small">
                 SIGN IN
             </Button>
         </Box>
