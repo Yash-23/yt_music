@@ -10,7 +10,6 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 const NavBar = () => {
   const classes = useStyles();
   const [searchBarOn, setSearchBarOn] = useState(false);
-  const searchInputRef = useRef();
 
   return (
     <Box className={classes.main} display={'flex'}>
@@ -18,7 +17,7 @@ const NavBar = () => {
         <img className={classes.logo} src={logo} alt='Music' height='25px' />
       </Link>
       {searchBarOn ? (
-        <SearchBar ref={searchInputRef} />
+        <SearchBar setSearchBarOn={setSearchBarOn} />
       ) : (
         <Box className={classes.navItems} display={'flex'}>
           <Box display={'flex'}>
@@ -27,8 +26,10 @@ const NavBar = () => {
               exact
               className={classes.link}
               activeClassName={classes.active}
+              //   onClick={() => searchInputRef.current.focus()}
             >
               <Typography variant='h6'>Home</Typography>
+              {/* <input type='text' ref={searchInputRef} /> */}
             </NavLink>
             <NavLink
               to={'/explore'}
@@ -50,8 +51,6 @@ const NavBar = () => {
               className={classes.link}
               onClick={(e) => {
                 setSearchBarOn(true);
-                console.log({ searchInputRef });
-                // searchInputRef.current.focus();
               }}
             >
               <Typography variant='h6'>
