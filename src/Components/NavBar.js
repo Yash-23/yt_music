@@ -1,10 +1,14 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../logo.svg';
 import SearchBar from './SearchBar';
-import { Box, Button, IconButton, Typography } from '@material-ui/core';
+import { Box, Button, IconButton, Typography, Hidden } from '@material-ui/core';
 import useStyles from '../Styles/NavBarStyle';
+
 import SearchIcon from '@material-ui/icons/Search';
+import HomeIcon from '@material-ui/icons/Home';
+import ExploreIcon from '@material-ui/icons/Explore';
+import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 const NavBar = () => {
@@ -26,24 +30,43 @@ const NavBar = () => {
               exact
               className={classes.link}
               activeClassName={classes.active}
-              //   onClick={() => searchInputRef.current.focus()}
             >
-              <Typography variant='h6'>Home</Typography>
-              {/* <input type='text' ref={searchInputRef} /> */}
+              <Hidden smDown>
+                <Typography variant='h6'>Home</Typography>
+              </Hidden>
+              <Hidden mdUp>
+                <Typography variant='h6'>
+                  <HomeIcon />
+                </Typography>
+              </Hidden>
             </NavLink>
             <NavLink
               to={'/explore'}
               className={classes.link}
               activeClassName={classes.active}
             >
-              <Typography variant='h6'>Explore</Typography>
+              <Hidden smDown>
+                <Typography variant='h6'>Explore</Typography>
+              </Hidden>
+              <Hidden mdUp>
+                <Typography variant='h6'>
+                  <ExploreIcon />
+                </Typography>
+              </Hidden>
             </NavLink>
             <NavLink
               to={'library'}
               className={classes.link}
               activeClassName={classes.active}
             >
-              <Typography variant='h6'>Library</Typography>
+              <Hidden smDown>
+                <Typography variant='h6'>Library</Typography>
+              </Hidden>
+              <Hidden mdUp>
+                <Typography variant='h6'>
+                  <LibraryMusicIcon />
+                </Typography>
+              </Hidden>
             </NavLink>
           </Box>
           <Box>
@@ -53,12 +76,19 @@ const NavBar = () => {
                 setSearchBarOn(true);
               }}
             >
-              <Typography variant='h6'>
-                <Box display='flex' className={classes.searchBar}>
+              <Hidden smDown>
+                <Typography variant='h6'>
+                  <Box display='flex' className={classes.searchBar}>
+                    <SearchIcon />
+                    Search
+                  </Box>
+                </Typography>
+              </Hidden>
+              <Hidden mdUp>
+                <Typography variant='h6'>
                   <SearchIcon />
-                  Search
-                </Box>
-              </Typography>
+                </Typography>
+              </Hidden>
             </Link>
           </Box>
         </Box>
