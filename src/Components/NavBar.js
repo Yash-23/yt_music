@@ -17,9 +17,9 @@ const NavBar = () => {
 
   return (
     <Box className={classes.main} display={'flex'}>
-      <Link to={'/'} className={classes.logo}>
+      <NavLink exact to={'/'} className={classes.logo}>
         <img className={classes.logo} src={logo} alt='Music' height='25px' />
-      </Link>
+      </NavLink>
       {searchBarOn ? (
         <SearchBar setSearchBarOn={setSearchBarOn} />
       ) : (
@@ -70,7 +70,7 @@ const NavBar = () => {
             </NavLink>
           </Box>
           <Box>
-            <Link
+            <div
               className={classes.link}
               onClick={(e) => {
                 setSearchBarOn(true);
@@ -89,7 +89,7 @@ const NavBar = () => {
                   <SearchIcon />
                 </Typography>
               </Hidden>
-            </Link>
+            </div>
           </Box>
         </Box>
       )}

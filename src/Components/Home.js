@@ -1,6 +1,8 @@
 const Home = () => {
-    return (
-        <h1></h1>
-    )
-}
+  return (
+    <div style={{ paddingTop: '64px' }}>
+      <h1>home page</h1>
+    </div>
+  );
+};
 export default Home;

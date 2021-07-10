@@ -1,11 +1,20 @@
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Switch, Route, useLocation } from 'react-router-dom';
 import Library from './Components/Library';
 import Home from './Components/Home';
 import Explore from './Components/Explore';
 import NavBar from './Components/NavBar';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import LoadingBar from 'react-top-loading-bar';
+import { useEffect, useRef } from 'react';
 
 function App() {
+  const loaderRef = useRef(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    handleLoadSomething();
+  }, [location]);
+
   const theme = createMuiTheme({
     typography: {
       h6: {
@@ -23,25 +32,27 @@ function App() {
     },
   });
 
+  function handleLoadSomething() {
+    loaderRef.current.continuousStart();
+    setTimeout(() => {
+      loaderRef.current.complete();
+    }, 200);
+  }
+
   return (
     <ThemeProvider theme={theme}>
-      <Router>
-        <div>
-          <NavBar />
+      <div>
+        <LoadingBar ref={loaderRef} color='#f00000' />
+        <NavBar />
 
-          <Switch>
-            <Route path='/'>
-              <Home />
-            </Route>
-            <Route path='/explore'>
-              <Explore />
-            </Route>
-            <Route path='/library'>
-              <Library />
-            </Route>
-          </Switch>
-        </div>
-      </Router>
+        <Switch>
+          <Route exact path='/' component={Home}></Route>
+
+          <Route path='/explore' component={Explore}></Route>
+
+          <Route path='/library' component={Library}></Route>
+        </Switch>
+      </div>
     </ThemeProvider>
   );
 }

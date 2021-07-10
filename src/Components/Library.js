@@ -1,6 +1,8 @@
 const Library = () => {
-    return (
-        <h2>Welcome to library</h2>
-    )
-}
+  return (
+    <div style={{ paddingTop: '64px' }}>
+      <h1>Library page</h1>
+    </div>
+  );
+};
 export default Library;

@@ -1,4 +1,3 @@
-import { Input } from '@material-ui/core';
 import { useEffect } from 'react';
 import { useRef } from 'react';
 import useStyles from '../Styles/SearchBarStyle';
@@ -11,6 +10,10 @@ function SearchBar({ setSearchBarOn }) {
   useEffect(() => {
     searchInputRef.current.focus();
   }, []);
+
+  // document.getElementById('searchBarInput').addEventListener('focusout', () => {
+  //   setSearchBarOn(false);
+  // });
 
   return (
     <div className={classes.searchContainer}>
@@ -25,6 +28,8 @@ function SearchBar({ setSearchBarOn }) {
         placeholder='Search'
         ref={searchInputRef}
         className={classes.searchBar}
+        id='searchBarInput'
+        onBlur={() => setSearchBarOn(false)}
       />
     </div>
   );

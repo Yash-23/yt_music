@@ -17,6 +17,7 @@ export default makeStyles({
   logo: {
     lineHeight: 1,
     zIndex: 3,
+    // position: 'absolute',
   },
   navItems: {
     boxSizing: 'border-box',
